@@ -6,7 +6,7 @@ import './SortingVisualizer.css';
 const ANIMATION_SPEED_MS = 4;
 
 //Number of bars/elements in array
-const NUMBER_OF_ARRAY_BARS = 265;
+const NUMBER_OF_ARRAY_BARS = 245;
 
 //Primary color of array bars
 const PRIMARY_COLOR = 'black';
@@ -30,10 +30,10 @@ export default class SortingVisualizer extends React.Component {
     resetArray() {
         const array = [];
         for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-            array.push(randomIntFromInterval(5, 700));
+            array.push(randomIntFromInterval(5, 999));
         }
         this.setState({ array });
-    }
+    }   
 
     mergeSort() {
         const animations = getMergeSortAnimations(this.state.array);
@@ -71,6 +71,7 @@ export default class SortingVisualizer extends React.Component {
             <div className="header">Sorting Algorithm Visualizer
                 <div className="array-container">
                     <button className="array-buttons" onClick={() => this.resetArray()}>New Array</button>
+                    <button className="array-buttons" onClick={() => this.resetArray()}>Stop</button>
                     <button className="array-buttons" onClick={() => this.mergeSort()}>Merge Sort</button>
                     <button className="array-buttons" onClick={() => this.heapSort()}>Heap Sort</button>
                     <button className="array-buttons" onClick={() => this.quickSort()}>Quick Sort</button>
@@ -80,7 +81,7 @@ export default class SortingVisualizer extends React.Component {
                             <div className="array-bar" key={idx}
                                 style={{
                                     backgroundColor: PRIMARY_COLOR,
-                                    height: `${(value + 30)}px`,
+                                    height: `${(value)}px`,
                                 }}
                             ></div>
                         ))}

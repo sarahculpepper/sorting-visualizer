@@ -7,15 +7,15 @@ export function getMergeSortAnimations(array) {
     return animations;
 }
 
-export function getHeapSortAnimations(array){
+/*export function getHeapSortAnimations(array){
     const animations = [];
     if (array.length <= 1) return array;
     const auxiliaryArray = array.slice();
     //heapSortHelper(array, animations);
     return animations;
-}
+}*/
 
-function doHeap(
+/*function doHeap(
     mainArray,
     arrayLength,
     i
@@ -33,7 +33,7 @@ function doHeap(
         mainArray[i], mainArray[largest] = mainArray[largest], mainArray[i];
         doHeap(mainArray, arrayLength, largest);
     }
-}    
+}*/
 
 function mergeSortHelper(
     mainArray,
@@ -89,7 +89,7 @@ function doMerge(
         mainArray[k++] = auxiliaryArray[j++];
     }
 
-    function heapSortHelper(
+    /*function heapSortHelper(
         mainArray,
         animations
     ) {
@@ -101,5 +101,5 @@ function doMerge(
             mainArray[i], mainArray[0] = mainArray[0], mainArray[i];
             doHeap(mainArray, i, 0);
         }
-    }
+    }*/
 }
