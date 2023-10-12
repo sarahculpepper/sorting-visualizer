@@ -14,7 +14,7 @@
     position: relative;
     top: 30px;
     bottom: 20px;
-    width: 8px;
+    width: 4px;
     display: inline-block;
     margin: 0 1px;
 }
@@ -31,7 +31,7 @@
     text-shadow: 2px 2px 2px lightslategray;
     left: 0;
     right: 0;
-    width: 360px;
+    width: 300px;
     margin: auto;
     padding: 10px;
     cursor: pointer;

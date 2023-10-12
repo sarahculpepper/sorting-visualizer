@@ -1,5 +1,5 @@
 import React from "react";
-import { getMergeSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
+import { getMergeSortAnimations, getQuickSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 import './SortingVisualizer.css';
 
 //Animation speed in ms
@@ -30,7 +30,7 @@ export default class SortingVisualizer extends React.Component {
     resetArray() {
         const array = [];
         for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-            array.push(randomIntFromInterval(5, 999));
+            array.push(randomIntFromInterval(5, 600));
         }
         this.setState({ array });
     }   
@@ -62,6 +62,31 @@ export default class SortingVisualizer extends React.Component {
 
     heapSort(){
         
+    }
+
+    quickSort(){
+        const animations = getQuickSortAnimations(this.state.array);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = i % 3 !== 2;
+            if (isColorChange) {
+                const [barOneIdx, barTwoIdx] = animations[i];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * ANIMATION_SPEED_MS);
+            }
+            else {
+                setTimeout(() => {
+                    const [barOneIdx, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * ANIMATION_SPEED_MS);
+            }
+        }
     }
 
     render() {
